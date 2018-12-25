@@ -1,0 +1,10 @@
+// This file is a set up directory for my server and tells the app which port to listen on
+
+const http = require("http"); 
+let app = require("../app");
+let server = http.createServer(app);
+
+server.listen(process.env.PORT, () => {
+  console.log('Good Connection');
+  
+});

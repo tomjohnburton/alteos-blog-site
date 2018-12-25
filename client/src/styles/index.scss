@@ -1,0 +1,59 @@
+body {
+  scale: abs($number: 100);
+}
+
+#blog-page {
+  display: flex;
+  justify-content: space-between;
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 40%;
+    max-width: 40%;
+    height: 80vh;
+    overflow: scroll;
+    a {
+      margin: 10px;
+    }
+    .active {
+      background-color: #efaa56;
+    }
+  }
+}
+
+.nav-bar {
+  margin-bottom: 20px;
+}
+.ui {
+  .card {
+    padding: 15px;
+    width: 100%;
+    color: black;
+  }
+}
+
+.blog-detail {
+  width: 60%;
+
+  .post-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 200px;
+    padding: 20px;
+    border-radius: 0.28571429rem;
+    -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  }
+  .action-buttons {
+  }
+}
+::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space */
+  background: transparent; /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
