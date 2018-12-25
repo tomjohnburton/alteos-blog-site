@@ -1,5 +1,6 @@
 const express = require("express");
 const Post = require("../../models/Post");
+const User = require("../../models/User");
 const router = express.Router();
 const { isLoggedIn, isAdmin } = require("../middlewares");
 
@@ -37,7 +38,6 @@ router.patch("/edit-post", isLoggedIn, isAdmin, (req, res, next) => {
     .then(response => {
       let oldTitle = response.title;
       let oldContent = response.content;
-      console.log(oldTitle, title);
       Post.findOneAndUpdate(
         { _id: _id },
         {
@@ -57,7 +57,6 @@ router.patch("/edit-post", isLoggedIn, isAdmin, (req, res, next) => {
 // ? Delete a post
 router.post("/delete-post", isLoggedIn, isAdmin, (req, res, next) => {
   let { _id } = req.body;
-  console.log(_id);
   Post.findOneAndDelete({ _id })
     .then(() => {
       res.status(200).json({ message: "Post successfully deleted" });
@@ -70,8 +69,8 @@ router.post("/delete-post", isLoggedIn, isAdmin, (req, res, next) => {
 // ? Add like
 router.patch("/add-like", (req, res) => {
   let { _id } = req.body;
+
   Post.findOne({ _id }).then(response => {
-    console.log(response);
     let { likes } = response;
     Post.findOneAndUpdate(
       { _id },
@@ -79,7 +78,16 @@ router.patch("/add-like", (req, res) => {
         likes: likes + 1
       }
     ).then(response => {
-      res.status(200).json({ likes: response.likes });
+      User.findOne({ _id: req.user._id })
+        .then(response => {
+          User.findOneAndUpdate(
+            { _id: response._id },
+            { likedPosts: [...response.likedPosts, _id] }
+          );
+        })
+        .then(() => {
+          res.status(200).json({ likes: response.likes });
+        });
     });
   });
 });

@@ -7,7 +7,8 @@ const userSchema = new Schema(
     email: String,
     password: String,
     roles: { type: String, enum: ["Admin", "User"], default: "Admin" },
-    posts: { type: [Schema.Types.ObjectId], ref: "Post" }
+    posts: { type: [Schema.Types.ObjectId], ref: "Post" },
+    likedPosts: { type: [Schema.Types.ObjectId], ref: "Post", default: [] }
   },
   {
     timestamps: {
