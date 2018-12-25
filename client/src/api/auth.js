@@ -12,6 +12,9 @@ export default {
   isLoggedIn() {
     return localStorage.getItem("user") != null;
   },
+  currentUser(user) {
+    return localStorage.user.includes(user);
+  },
   isAdmin() {
     return localStorage.user.includes("Admin");
   },

@@ -15,6 +15,7 @@ class CreatePost extends Component {
   render() {
     return (
       <div className="ui blog-detail">
+        <h2>Write a post</h2>
         <PostForm onSubmit={this.submit} />
       </div>
     );

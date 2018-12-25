@@ -15,12 +15,15 @@ body {
     max-width: 40%;
     height: 80vh;
     overflow: scroll;
+    h1 {
+      text-align: center;
+    }
     a {
       margin: 10px;
       color: #000;
     }
     .active {
-      background-color: #efaa56;
+      background-color: lightgray;
     }
   }
 }

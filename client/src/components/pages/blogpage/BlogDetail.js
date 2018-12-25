@@ -67,15 +67,15 @@ class BlogDetail extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="ui blog-detail">
         {!this.props.selectedPost ? (
           <h1>Select a Post</h1>
         ) : (
           <>
+            <h1>{this.props.selectedPost.title}</h1>
             <div className="post-content">
-              <h5>{this.props.selectedPost.title}</h5>
+              {/* <h5>{this.props.selectedPost.title}</h5> */}
               <p>
                 {this.props.selectedPost.content ||
                   this.props.selectedPost.body}

@@ -7,6 +7,8 @@ import BlogDetail from "./BlogDetail";
 import { Route } from "react-router-dom";
 import { Segment } from "semantic-ui-react";
 import CreatePost from "../createpost/CreatePost";
+import api from "../../../api/auth";
+
 const PlaceholderExamplePlaceholder = () => (
   <div className="ui card">
     <Placeholder>
@@ -63,6 +65,7 @@ class BlogList extends Component {
       return (
         <div id="blog-page">
           <div className="blog-list">
+            <h1>Community Posts</h1>
             {this.props.posts &&
               this.props.posts.map((post, i) => (
                 <Link
@@ -70,9 +73,15 @@ class BlogList extends Component {
                   key={i}
                   to={`/blog/${i}/read`}
                 >
-                  <Segment color="black" className={this.active(i)}>
-                    <h1>{post.title}</h1>
+                  <Segment
+                    color={
+                      api.currentUser(post.user.email) ? "orange" : "black"
+                    }
+                    className={this.active(i)}
+                  >
+                    <h2>{post.title}</h2>
                     <p>{post.content || post.contents || post.body}</p>
+                    <small>{post.user.email}</small>
                   </Segment>
                 </Link>
               ))}

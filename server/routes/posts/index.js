@@ -33,18 +33,21 @@ router.post("/create-post", isLoggedIn, isAdmin, (req, res, next) => {
 // ? Edit a post
 router.patch("/edit-post", isLoggedIn, isAdmin, (req, res, next) => {
   let { title, content, _id } = req.body;
-  Post.findOne({ _id });
-  Post.findOneAndUpdate(
-    { _id: _id },
-    {
-      title: title ? title : "",
-      content: content ? content : "",
-
-      user: req.user._id
-    }
-  )
-    .then(() => {
-      res.status(200).json({ message: "Post successfully updated" });
+  Post.findOne({ _id })
+    .then(response => {
+      let oldTitle = response.title;
+      let oldContent = response.content;
+      console.log(oldTitle, title);
+      Post.findOneAndUpdate(
+        { _id: _id },
+        {
+          title: title == undefined ? oldTitle : title,
+          content: content == undefined ? oldContent : content,
+          user: req.user._id
+        }
+      ).then(() => {
+        res.status(200).json({ message: "Post successfully updated" });
+      });
     })
     .catch(err => {
       console.log(err);

@@ -15,11 +15,13 @@ body {
     max-width: 40%;
     height: 80vh;
     overflow: scroll; }
+    #blog-page .blog-list h1 {
+      text-align: center; }
     #blog-page .blog-list a {
       margin: 10px;
       color: #000; }
     #blog-page .blog-list .active {
-      background-color: #efaa56; }
+      background-color: lightgray; }
 
 .nav-bar {
   margin-bottom: 20px; }
