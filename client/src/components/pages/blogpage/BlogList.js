@@ -68,18 +68,18 @@ class BlogList extends Component {
                 <Link
                   onClick={() => this.handleClick(i)}
                   key={i}
-                  to={`/blog/${i}`}
+                  to={`/blog/${i}/read`}
                 >
-                  <Segment color="blue" className={this.active(i)}>
+                  <Segment color="black" className={this.active(i)}>
                     <h1>{post.title}</h1>
                     <p>{post.content || post.contents || post.body}</p>
                   </Segment>
                 </Link>
               ))}
           </div>
+
           <Route
-            exact
-            path="/blog/:id"
+            path="/blog/:id/read"
             render={props => (
               <BlogDetail
                 {...props}
@@ -89,7 +89,6 @@ class BlogList extends Component {
             )}
           />
           <Route
-            exact
             path="/blog/post"
             render={props => (
               <CreatePost

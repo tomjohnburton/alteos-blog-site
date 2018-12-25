@@ -33,7 +33,7 @@ router.post("/create-post", isLoggedIn, isAdmin, (req, res, next) => {
 // ? Edit a post
 router.patch("/edit-post", isLoggedIn, isAdmin, (req, res, next) => {
   let { title, content, _id } = req.body;
-
+  Post.findOne({ _id });
   Post.findOneAndUpdate(
     { _id: _id },
     {

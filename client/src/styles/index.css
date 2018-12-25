@@ -1,6 +1,9 @@
 body {
   scale: 100; }
 
+#app {
+  background-color: #fcfcfc; }
+
 #blog-page {
   display: flex;
   justify-content: space-between; }
@@ -13,7 +16,8 @@ body {
     height: 80vh;
     overflow: scroll; }
     #blog-page .blog-list a {
-      margin: 10px; }
+      margin: 10px;
+      color: #000; }
     #blog-page .blog-list .active {
       background-color: #efaa56; }
 
@@ -25,14 +29,31 @@ body {
   width: 100%;
   color: black; }
 
+.landing-page {
+  height: calc(100vh - 77px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .landing-page h1 {
+    font-size: 50px;
+    text-align: center; }
+
+.logo {
+  cursor: default; }
+
 .blog-detail {
-  width: 60%; }
+  width: 60%;
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
   .blog-detail .post-content {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     height: 200px;
     padding: 20px;
+    width: 80%;
     border-radius: 0.28571429rem;
     -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5; }
@@ -40,8 +61,7 @@ body {
 ::-webkit-scrollbar {
   width: 0px;
   /* remove scrollbar space */
-  background: transparent;
-  /* optional: just make scrollbar invisible */ }
+  display: none; }
 
 /* optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {

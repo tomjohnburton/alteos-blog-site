@@ -4,7 +4,7 @@ import { Field, reduxForm } from "redux-form";
 let UserForm = props => {
   const { handleSubmit } = props;
   return (
-    <div id="signup-form">
+    <div className="ui container">
       <h3>{props.formTitle}</h3>
       <form onSubmit={handleSubmit} className="ui form">
         <div className="field">

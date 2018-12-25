@@ -6,7 +6,7 @@ function NavBar(props) {
   return (
     <div className="nav-bar">
       <div className="ui pointing responsive menu">
-        <NavLink to="#" className="item">
+        <NavLink to="#" className="item logo">
           <img src="/Alteos.png" alt="icon" />
         </NavLink>
         <NavLink exact to="/" className="item">
@@ -40,7 +40,7 @@ function NavBar(props) {
           </Fragment>
         )}
         {api.isLoggedIn() && (
-          <div className="right menu">
+          <div className=" menu">
             <div className="item">
               <div className="ui transparent icon input">
                 <input type="text" placeholder="Search..." />

@@ -30,6 +30,7 @@ class BlogDetail extends Component {
         this.setState({
           update: !this.state.update
         });
+        this.props.history.push("/blog");
       });
     });
   };
@@ -66,8 +67,9 @@ class BlogDetail extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
-      <div className="ui container blog-detail">
+      <div className="ui blog-detail">
         {!this.props.selectedPost ? (
           <h1>Select a Post</h1>
         ) : (

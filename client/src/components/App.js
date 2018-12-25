@@ -8,7 +8,6 @@ import Login from "./pages/auth/Login";
 import BlogList from "./pages/blogpage/BlogList";
 import LoggedRoute from "./utils/LoggedRoute";
 import ProtectedRoute from "./utils/ProtectedRoute";
-import CreatePost from "./pages/createpost/CreatePost";
 
 export default class App extends Component {
   constructor(props) {

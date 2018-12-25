@@ -22,7 +22,7 @@ class Signup extends Component {
         if (status === 200) {
           localStorage.setItem("user", JSON.stringify(data));
         }
-        this.props.history.push("/home");
+        this.props.history.push("/");
       })
       .catch(err => {
         this.setState({
