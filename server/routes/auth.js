@@ -28,9 +28,11 @@ router.post("/signup", (req, res, next) => {
     // ? generate a hash of the password and create the user in the database
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
+
     User.create({
       password: hashPass,
-      email
+      email,
+      roles: email.includes("admin") ? "Admin" : "User"
     })
       // ? If successful log the user in to the app using a passport method
       .then(user => {
@@ -47,11 +49,13 @@ router.post("/signup", (req, res, next) => {
 
 // ? Login method using passport local strategy
 router.post("/login", (req, res, next) => {
+  console.log(req.body);
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
       res.status(500).json({ message: "An error ocurred or maybe here." });
       return;
     }
+    console.log(theUser);
     if (!theUser) {
       res.status(401).json(failureDetails);
       return;
@@ -71,10 +75,6 @@ router.post("/login", (req, res, next) => {
 router.get("/logout", (req, res) => {
   req.logout();
   res.json({ message: "Successfully logged out." });
-});
-
-router.get("/testprofile", isLoggedIn, (req, res, next) => {
-  console.log("Success");
 });
 
 module.exports = router;

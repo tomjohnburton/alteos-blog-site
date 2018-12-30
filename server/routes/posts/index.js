@@ -27,7 +27,7 @@ router.post("/create-post", isLoggedIn, isAdmin, (req, res, next) => {
       res.status(200).json({ message: "Post successfully created" });
     })
     .catch(err => {
-      console.log(err);
+      console.log("ERROR", err);
     });
 });
 
@@ -80,6 +80,7 @@ router.patch("/add-like", (req, res) => {
     ).then(response => {
       User.findOne({ _id: req.user._id })
         .then(response => {
+          console.log(response);
           User.findOneAndUpdate(
             { _id: response._id },
             { likedPosts: [...response.likedPosts, _id] }

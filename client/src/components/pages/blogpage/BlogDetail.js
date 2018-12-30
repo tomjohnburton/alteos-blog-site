@@ -1,4 +1,4 @@
-import { Button } from "semantic-ui-react";
+import { Button, Message } from "semantic-ui-react";
 import React, { Component } from "react";
 import PostForm from "../../utils/PostForm";
 import { connect } from "react-redux";
@@ -14,7 +14,8 @@ class BlogDetail extends Component {
       editButton: "Edit",
       cancelButton: "Cancel",
       update: true,
-      likes: 0
+      likes: 0,
+      adminError: false
     };
   }
 
@@ -25,14 +26,27 @@ class BlogDetail extends Component {
   };
 
   deletePost = () => {
-    this.props.deletePost(this.props.selectedPost._id).then(() => {
-      this.props.getPosts().then(() => {
-        this.setState({
-          update: !this.state.update
+    this.props
+      .deletePost(this.props.selectedPost._id)
+      .then(() => {
+        this.props.getPosts().then(() => {
+          this.setState({
+            update: !this.state.update
+          });
+          this.props.history.push("/blog");
         });
-        this.props.history.push("/blog");
+      })
+      .catch(err => {
+        console.log("error", err.toString());
+        this.setState({
+          adminError: !this.state.adminError
+        });
+        setTimeout(() => {
+          this.setState({
+            adminError: !this.state.adminError
+          });
+        }, 5000);
       });
-    });
   };
 
   handleAddLike = _id => {
@@ -57,13 +71,26 @@ class BlogDetail extends Component {
       content: data.content,
       _id: this.props.selectedPost._id
     };
-    this.props.editPost(editData).then(() => {
-      this.props.getPosts();
-      this.setState({
-        editSelect: !this.state.editSelect
+    this.props
+      .editPost(editData)
+      .then(() => {
+        this.props.getPosts();
+        this.setState({
+          editSelect: !this.state.editSelect
+        });
+        this.forceUpdate();
+      })
+      .catch(err => {
+        console.log("error", err.toString());
+        this.setState({
+          adminError: !this.state.adminError
+        });
+        setTimeout(() => {
+          this.setState({
+            adminError: !this.state.adminError
+          });
+        }, 5000);
       });
-      this.forceUpdate();
-    });
   };
 
   render() {
@@ -118,6 +145,12 @@ class BlogDetail extends Component {
             </div>
           </>
         )}
+        {this.state.adminError && (
+          <Message negative>
+            <Message.Header>You are not an admin</Message.Header>
+          </Message>
+        )}
+
         {this.state.editSelect ? <PostForm onSubmit={this.submitEdit} /> : ""}
       </div>
     );
