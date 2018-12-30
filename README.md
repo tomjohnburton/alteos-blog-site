@@ -45,7 +45,7 @@ npm start
 ## User roles
 By default, if you signup with a random user name you will be given the `User` role. This allows you to read all posts.
 
-If you signup with a username that includes the string "admin", you will be given the `Admin` role. This allows you to create, update and delete posts.
+If you signup with an email that includes the string "admin", you will be given the `Admin` role. This allows you to create, update and delete posts.
 
 ## How to run the server tests
 
