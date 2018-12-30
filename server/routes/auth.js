@@ -13,15 +13,15 @@ const bcryptSalt = 10;
 
 router.post("/signup", (req, res, next) => {
   // ? Sanity check to ensure user has filled out all the required fields
-  const { password, email } = req.body;
-  if (password === "" || email === "") {
+  const { password, username } = req.body;
+  if (password === "" || username === "") {
     res.status(400).json({ message: "Indicate all the fields" });
     return;
   }
-  // ? check if the email is already registered in the DB
-  User.findOne({ email }, "email", (err, user) => {
+  // ? check if the username is already registered in the DB
+  User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
-      res.status(400).json({ message: "The email is already registered!" });
+      res.status(400).json({ message: "The username is already registered!" });
       return;
     }
 
@@ -31,8 +31,8 @@ router.post("/signup", (req, res, next) => {
 
     User.create({
       password: hashPass,
-      email,
-      roles: email.includes("admin") ? "Admin" : "User"
+      username,
+      roles: username.includes("admin") ? "Admin" : "User"
     })
       // ? If successful log the user in to the app using a passport method
       .then(user => {
@@ -49,13 +49,12 @@ router.post("/signup", (req, res, next) => {
 
 // ? Login method using passport local strategy
 router.post("/login", (req, res, next) => {
-  console.log(req.body);
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
       res.status(500).json({ message: "An error ocurred or maybe here." });
       return;
     }
-    console.log(theUser);
+
     if (!theUser) {
       res.status(401).json(failureDetails);
       return;

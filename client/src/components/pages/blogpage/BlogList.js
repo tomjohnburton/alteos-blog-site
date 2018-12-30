@@ -59,6 +59,7 @@ class BlogList extends Component {
   }
 
   renderPosts() {
+    console.log(this.props);
     if (!this.props.posts) {
       return PlaceholderExamplePlaceholder();
     } else {
@@ -75,13 +76,13 @@ class BlogList extends Component {
                 >
                   <Segment
                     color={
-                      api.currentUser(post.user.email) ? "orange" : "black"
+                      api.currentUser(post.user.username) ? "orange" : "black"
                     }
                     className={this.active(i)}
                   >
                     <h2>{post.title}</h2>
                     <p>{post.content || post.contents || post.body}</p>
-                    <small>{post.user.email}</small>
+                    <small>{post.user.username}</small>
                   </Segment>
                 </Link>
               ))}

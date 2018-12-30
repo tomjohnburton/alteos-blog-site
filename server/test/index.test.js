@@ -14,7 +14,7 @@ var request = require("supertest");
 
 //let's set up the data we need to pass to the login method
 const userCredentials = {
-  email: "tom@tom.tom",
+  username: "tom@tom.tom",
   password: "tom"
 };
 //now let's login the user
@@ -30,7 +30,7 @@ before(function(done) {
       done();
     });
 });
-//this test says: make a POST to the /login route with the email provided in userCredentials
+//this test says: make a POST to the /login route with the username provided in userCredentials
 //after the POST has completed, make sure the status code is 200
 //also make sure that the user has been directed to the /home page
 
@@ -42,7 +42,7 @@ describe("GET /", function(done) {
 });
 
 let signupCredentials = {
-  email: uuidv4() + "@example.com",
+  username: uuidv4() + "@example.com",
   password: "example"
 };
 
@@ -57,7 +57,7 @@ before(function(done) {
       done();
     });
 });
-//this test says: make a POST to the /login route with the email provided in userCredentials
+//this test says: make a POST to the /login route with the username provided in userCredentials
 //after the POST has completed, make sure the status code is 200
 //also make sure that the user has been directed to the /home page
 

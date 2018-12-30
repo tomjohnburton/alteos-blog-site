@@ -44,7 +44,7 @@ class Signup extends Component {
             <Message.Header>
               We're sorry but something went wrong...
             </Message.Header>
-            <p>This email has already been registered</p>
+            <p>This username has already been registered</p>
           </Message>
         )}
       </div>

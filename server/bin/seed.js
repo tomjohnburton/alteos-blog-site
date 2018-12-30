@@ -5,12 +5,12 @@ require("../configs/database");
 
 const users = [
   {
-    email: "John",
+    username: "John",
     password: "pwd",
     role: "Admin"
   },
   {
-    email: "Harry",
+    username: "Harry",
     password: "pwd2",
     role: "User"
   }

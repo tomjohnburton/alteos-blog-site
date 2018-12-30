@@ -8,8 +8,8 @@ let LoginForm = props => {
       <h3>Log In</h3>
       <form onSubmit={handleSubmit} className="ui form">
         <div className="field">
-          <label htmlFor="email">Email</label>
-          <Field name="email" component="input" type="email" validate />
+          <label htmlFor="username">username</label>
+          <Field name="username" component="input" type="text" validate />
         </div>
         <div className="field">
           <label htmlFor="password">Password</label>

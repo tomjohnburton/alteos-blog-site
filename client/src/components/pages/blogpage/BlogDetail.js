@@ -110,7 +110,7 @@ class BlogDetail extends Component {
               <p>{this.props.selectedPost.created_at}</p>
               <p>
                 {this.props.selectedPost.user
-                  ? this.props.selectedPost.user.email
+                  ? this.props.selectedPost.user.username
                   : ""}
               </p>
               <div className="action-buttons">

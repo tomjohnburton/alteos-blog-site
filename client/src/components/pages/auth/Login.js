@@ -44,7 +44,7 @@ class Login extends Component {
             <Message.Header>
               We're sorry but something went wrong...
             </Message.Header>
-            <p>Are you sure you entered the correct email and password?</p>
+            <p>Are you sure you entered the correct username and password?</p>
           </Message>
         )}
       </div>

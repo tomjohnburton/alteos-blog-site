@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    email: String,
+    username: String,
     password: String,
     roles: { type: String, enum: ["Admin", "User"], default: "User" },
     posts: { type: [Schema.Types.ObjectId], ref: "Post" },

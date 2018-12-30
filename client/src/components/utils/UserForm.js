@@ -8,8 +8,8 @@ let UserForm = props => {
       <h3>{props.formTitle}</h3>
       <form onSubmit={handleSubmit} className="ui form">
         <div className="field">
-          <label htmlFor="email">Email</label>
-          <Field name="email" component="input" type="email" />
+          <label htmlFor="username">Username</label>
+          <Field name="username" component="input" type="text" />
         </div>
         <div className="field">
           <label htmlFor="password">Password</label>

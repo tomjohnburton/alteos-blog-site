@@ -18,7 +18,6 @@ class CreatePost extends Component {
       .createPost(data)
       .then(() => {
         this.props.history.push("/blog");
-        let { status, data } = this.props.createdPost;
         this.props.updateOnSubmit(true);
       })
       .catch(err => {
@@ -32,10 +31,6 @@ class CreatePost extends Component {
           });
         }, 5000);
       });
-  };
-
-  componentDidUpdate = (prevProps, prevState) => {
-    console.log(this.props);
   };
 
   render() {
