@@ -39,16 +39,6 @@ function NavBar(props) {
             </NavLink>
           </Fragment>
         )}
-        {api.isLoggedIn() && (
-          <div className=" menu">
-            <div className="item">
-              <div className="ui transparent icon input">
-                <input type="text" placeholder="Search..." />
-                <i className="search link icon" />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

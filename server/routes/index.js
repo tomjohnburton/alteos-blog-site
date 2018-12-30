@@ -9,4 +9,8 @@ router.get("/secret", (req, res, next) => {
   });
 });
 
+router.get("/dockertest", (req, res) => {
+  res.json({ message: "docker up and running" });
+});
+
 module.exports = router;

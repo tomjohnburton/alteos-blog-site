@@ -9,6 +9,7 @@ mongoose // connect to mongo using mongoose
     { useNewUrlParser: true }
   )
   .then(x => {
+    console.log("URI", uri);
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name} on PORT:${
         process.env.PORT

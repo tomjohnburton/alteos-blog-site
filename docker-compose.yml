@@ -1,0 +1,33 @@
+version: "3"
+services:
+  server: # define the name of the container
+    build:
+      context: ./server/
+    command: npm run dev
+    volumes:
+      - ./server/:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - "5000:5000"
+    env_file: ./server/.env
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    links:
+      - mongo
+  client:
+    build:
+      context: ./client/
+    command: npm start
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    links:
+      - server
+    ports:
+      - "3000:3000"
+  mongo:
+    container_name: mongo_alteos_final
+    image: mongo
+    ports:
+      - "27017:27017"
