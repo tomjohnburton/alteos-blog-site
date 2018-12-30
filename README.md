@@ -20,6 +20,13 @@ Open up two terminal instances and from the root directory run the following
 
 ```
 cd server/
+touch .env
+
+```
+
+At this point you will have to specify the port the server will run on. Open up your .env file and type `PORT=5000`
+
+```
 npm i
 npm start
 ```
