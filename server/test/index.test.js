@@ -1,11 +1,6 @@
 // ! Basic test environment set up
 
-const User = require('../models/User');
-const Post = require('../models/Post');
 const expect = require('chai').expect; //? Testing framework
-const nock = require('nock'); //? HTTP server mocking and expectations library for Node.js
-const response = require('./response'); //? response folder
-const auth = require('../routes/auth');
 const uuidv4 = require('uuid/v4');
 
 var app = require('../app');
@@ -75,6 +70,7 @@ after(function(done) {
   authenticatedUser
     .post('/user-delete-test')
     .send({ username })
+
     .end(function(err, response) {
       expect(response.status).to.equal(200, done);
       done();

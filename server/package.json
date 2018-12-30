@@ -7,7 +7,7 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "debug": "DEBUG=server:* nodemon ./bin/www",
-    "test": "node_modules/.bin/mocha"
+    "test": "node_modules/.bin/mocha && ^C"
   },
   "dependencies": {
     "aws-sdk": "^2.363.0",
