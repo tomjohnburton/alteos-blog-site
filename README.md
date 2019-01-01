@@ -2,7 +2,7 @@
 
 ## About the app
 
-The client which serves the FrontEnd (using React), and the server (in Node/Express). 
+I used this app as a way to really learn and understand Redux and the basics of Docker, containerisation etc. The app is split into two sections: the client which serves the FrontEnd (using React), and the server (in Node/Express). 
 
 ### Prerequisits 
 
