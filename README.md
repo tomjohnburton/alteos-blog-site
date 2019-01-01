@@ -2,7 +2,15 @@
 
 ## About the app
 
-The client which serves the FrontEnd (using React), and the server (in Node/Express).
+The client which serves the FrontEnd (using React), and the server (in Node/Express). 
+
+### Prerequisits 
+
+I highly reccommend downloading [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) from VSCode marketplace as it will make the comments I have included stand out more.
+
+[Docker](https://www.docker.com/get-started)
+
+[NodeJS](https://nodejs.org/en/)
 
 ## How to run the client
 
@@ -16,10 +24,11 @@ npm start
 
 ## How to run the server
 
-Open up two terminal instances and from the root directory run the following
+On the other terminal instance, run the following
 
 ```
 cd server/
+npm i
 touch .env
 
 ```
@@ -27,7 +36,6 @@ touch .env
 At this point you will have to specify the port the server will run on. Open up your .env file and type `PORT=5000`
 
 ```
-npm i
 npm start
 ```
 
@@ -68,13 +76,13 @@ MONGODB_URI=`mongodb://mongo:27017/alteos-blog`
 Then make sure you are in your root directory and type the following command:
 
 ```
-docker-compose up --build
+docker-compose up -d --build
 ```
 
 After the file has been built once you can start the application up again by simply running
 
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 To shutdown all containers run:
