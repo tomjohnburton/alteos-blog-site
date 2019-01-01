@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
 import NavBar from "./utils/NavBar";
 import Signup from "./pages/auth/Signup";
@@ -25,7 +24,6 @@ export default class App extends Component {
             <Route exact path="/" component={LandingPage} />
             <LoggedRoute path="/signup" component={Signup} />
             <LoggedRoute path="/login" component={Login} />
-            <ProtectedRoute path="/home" component={Home} />
             <ProtectedRoute path="/blog" component={BlogList} />
           </Switch>
         </div>

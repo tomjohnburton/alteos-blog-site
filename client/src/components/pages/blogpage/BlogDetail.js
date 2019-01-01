@@ -74,11 +74,12 @@ class BlogDetail extends Component {
     this.props
       .editPost(editData)
       .then(() => {
-        this.props.getPosts();
-        this.setState({
-          editSelect: !this.state.editSelect
+        this.props.getPosts().then(() => {
+          this.setState({
+            editSelect: !this.state.editSelect
+          });
+          this.props.history.push("/blog");
         });
-        this.forceUpdate();
       })
       .catch(err => {
         console.log("error", err.toString());

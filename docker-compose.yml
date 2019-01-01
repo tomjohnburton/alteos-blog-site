@@ -1,19 +1,18 @@
-version: '3'
+#! $ docker-compose up --build
+
+version: "3"
 services:
   server: # define the name of the container
     build:
-      context: ./server/
-    command: npm run dev
-    volumes:
+      context: ./server/ # specify the location of the docker file
+    command: npm run dev # command that is run after the build is complete
+    volumes: # specifu location of volumes
       - ./server/:/usr/app
       - /usr/app/node_modules
-    ports:
-      - '5000:5000'
-    env_file: ./server/.env
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-    links:
+    ports: # specify the ports I want to expose and where to
+      - "5000:5000"
+    env_file: ./server/.env # specify location of .env file
+    links: # specify the connection to mongo database
       - mongo
   client:
     build:
@@ -22,12 +21,12 @@ services:
     volumes:
       - ./client/:/usr/app
       - /usr/app/node_modules
-    links:
+    links: # specify connection to the server
       - server
     ports:
-      - '3000:3000'
+      - "3000:3000"
   mongo:
     container_name: mongo_alteos_db
-    image: mongo
+    image: mongo # specify the image to be downloaded from dockerhub
     ports:
-      - '27017:27017'
+      - "27017:27017"

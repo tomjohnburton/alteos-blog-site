@@ -15,6 +15,7 @@ router.get("/list-posts", (req, res) => {
 });
 // ? Create a new post
 router.post("/create-post", isLoggedIn, isAdmin, (req, res, next) => {
+  console.log(req.body);
   let { title, content } = req.body;
   let { user } = req;
   Post.create({

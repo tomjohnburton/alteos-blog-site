@@ -1,4 +1,4 @@
-// ? Routes only accessible when logges out
+// ? Routes only accessible when user is logged out
 
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
